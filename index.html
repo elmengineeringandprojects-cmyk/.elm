@@ -95,8 +95,16 @@
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 1rem;
     }
+    .slideshow-dot.active {
+      background-color: rgba(255, 255, 255, 0.9);
+      width: 2.5rem;
+      transition: all 0.3s ease;
+    }
+    .fade-transition {
+      opacity: 0;
+    }
   </style>
-  <style>@view-transition { navigation: auto; }</style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full font-body text-gray-900 overflow-auto">
@@ -105,9 +113,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
      <div class="flex items-center justify-between h-20">
       <div class="flex items-center gap-3">
-       <div class="w-12 h-12 rounded-lg accent-gradient flex items-center justify-center">
-        <svg class="w-7 h-7" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h6M9 13h6M9 17h6" />
-        </svg>
+       <div class="w-12 h-12 rounded-lg overflow-hidden border-2 border-yellow-500"><img src="https://i.ibb.co/HLGbQQ14/0003.png" alt="ELM Engineering logo" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4af37 0%, #ffd700 100%)'; this.alt='Logo unavailable';">
        </div>
        <div><span id="nav-company-name" class="font-display text-xl font-bold text-gray-900">ELM ENGINEERING</span> <span class="hidden md:block text-xs text-gray-600 font-semibold tracking-wide">AND PROJECTS LTD</span>
        </div>
@@ -133,7 +139,19 @@
       <div class="animate-slide-up text-white">
        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-white bg-opacity-10 backdrop-blur-sm border border-white border-opacity-20">
         <svg class="w-4 h-4 text-yellow-400" viewbox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg><span class="text-sm font-semibold">Trusted Engineering Excellence</span>
+        </svg><span class="text-sm font-semibold">Where Quality Meets Structural Integrity</span>
+       </div>
+       <div class="flex items-center gap-4 mb-6">
+        <div class="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden border-3 border-yellow-400 shadow-lg flex-shrink-0"><img src="https://i.ibb.co/HLGbQQ14/0003.png" alt="ELM Engineering logo" class="w-full h-full object-cover" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #d4af37 0%, #ffd700 100%)'; this.alt='Logo unavailable';">
+        </div>
+        <div>
+         <div class="font-display text-2xl md:text-3xl font-bold text-white mb-1">
+          ELM ENGINEERING
+         </div>
+         <div class="text-lg md:text-xl font-semibold text-yellow-400 tracking-wide">
+          AND PROJECTS LTD
+         </div>
+        </div>
        </div>
        <h1 id="hero-title" class="font-display text-5xl md:text-6xl lg:text-7xl leading-tight mb-6 font-bold">Building Safe,<br><span class="text-yellow-400">Durable</span> Structures</h1>
        <p id="hero-subtitle" class="text-xl md:text-2xl mb-8 leading-relaxed text-gray-200">Multidisciplinary civil engineering and project delivery company committed to future-ready infrastructure.</p>
@@ -145,7 +163,14 @@
       <div class="relative animate-fade-in" style="animation-delay: 0.3s;">
        <div class="relative">
         <div class="absolute inset-0 accent-gradient opacity-20 blur-3xl rounded-full"></div>
-        <div class="relative rounded-2xl shadow-2xl overflow-hidden" style="height: 500px;"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&amp;w=1200&amp;auto=format&amp;fit=crop" alt="Civil engineering construction site with structural framework and beams" class="w-full h-full object-cover" loading="lazy" onerror="this.src=''; this.alt='Image failed to load'; this.style.display='none';">
+        <div class="relative rounded-2xl shadow-2xl overflow-hidden" style="height: 500px;"><img id="hero-slideshow" src="https://i.ibb.co/XrxSwjBg/0004.png" alt="ELM Engineering project showcase" class="w-full h-full object-cover transition-opacity duration-1000" loading="lazy" onerror="console.error('Image failed to load:', this.src); this.style.background='#e5e7eb'; this.alt='Image unavailable';">
+        </div>
+        <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-10">
+         <div class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50"></div>
+         <div class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50"></div>
+         <div class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50"></div>
+         <div class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50"></div>
+         <div class="slideshow-dot w-2 h-2 rounded-full bg-white bg-opacity-50"></div>
         </div>
        </div>
       </div>
@@ -161,7 +186,7 @@
      <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
       <div>
        <h3 class="font-display text-3xl font-bold text-gray-900 mb-6">Our Approach</h3>
-       <p class="text-lg text-gray-600 leading-relaxed mb-6">We provide end-to-end engineering solutions that include structural design, foundation engineering, geotechnical investigations, and project management to execute projects efficiently.</p>
+       <p class="text-lg text-gray-600 leading-relaxed mb-6">We provide end to end engineering solutions that include structural design, foundation engineering, geotechnical investigations, and project management to execute projects efficiently.</p>
        <p class="text-lg text-gray-600 leading-relaxed">We serve private developers, construction firms, estate builders, government agencies, and industrial clients who require technical accuracy, quality workmanship, and dependable project execution.</p>
       </div>
       <div class="grid grid-cols-2 gap-4">
@@ -206,7 +231,7 @@
         </svg>
        </div>
        <h3 class="font-display text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
-       <p id="mission-text" class="text-gray-600 leading-relaxed">To deliver high-quality engineering solutions and reliable project support that enhance the built environment and support sustainable development.</p>
+       <p id="mission-text" class="text-gray-600 leading-relaxed">To deliver high quality engineering solutions and reliable project support that enhance the built environment and support sustainable development.</p>
       </div>
       <div class="bg-white p-8 rounded-2xl border border-gray-200 shadow-sm">
        <div class="w-14 h-14 accent-gradient rounded-xl flex items-center justify-center mb-6">
@@ -344,7 +369,7 @@
          </div>
          <div>
           <h4 class="font-bold text-gray-900 mb-1">Email</h4>
-          <p id="contact-email-display" class="text-gray-600">info@elmengineering.com</p>
+          <p id="contact-email-display" class="text-gray-600">elmengineeringandprojects@gmail.com</p>
          </div>
         </div>
        </div>
@@ -356,7 +381,7 @@
          </div>
          <div>
           <h4 class="font-bold text-gray-900 mb-1">Phone</h4>
-          <p id="contact-phone-display" class="text-gray-600">+234 XXX XXX XXXX</p>
+          <p id="contact-phone-display" class="text-gray-600">+234 706 258 4769</p>
          </div>
         </div>
        </div>
@@ -368,7 +393,7 @@
          </div>
          <div>
           <h4 class="font-bold text-gray-900 mb-1">Office</h4>
-          <p id="contact-address-display" class="text-gray-600">Lagos, Nigeria</p>
+          <p id="contact-address-display" class="text-gray-600">6, church street, folagoro, shomolu, Yaba Lagos, Nigeria</p>
          </div>
         </div>
        </div>
@@ -383,29 +408,6 @@
          </div>
         </div>
        </div>
-      </div>
-      <div class="lg:col-span-3 bg-gray-50 p-8 rounded-2xl border border-gray-200">
-       <h3 class="font-display text-2xl font-bold text-gray-900 mb-6">Send Us a Message</h3>
-       <form id="contact-form" class="space-y-5">
-        <div class="grid md:grid-cols-2 gap-5">
-         <div><label for="name" class="block text-sm font-semibold text-gray-700 mb-2">Full Name</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-20 outline-none transition-all">
-         </div>
-         <div><label for="email" class="block text-sm font-semibold text-gray-700 mb-2">Email Address</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-20 outline-none transition-all">
-         </div>
-        </div>
-        <div class="grid md:grid-cols-2 gap-5">
-         <div><label for="phone" class="block text-sm font-semibold text-gray-700 mb-2">Phone Number</label> <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-20 outline-none transition-all">
-         </div>
-         <div><label for="service" class="block text-sm font-semibold text-gray-700 mb-2">Service Interested In</label> <select id="service" name="service" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-20 outline-none transition-all bg-white"> <option value="">Select a service</option> <option value="structural">Structural Engineering</option> <option value="geotechnical">Geotechnical Engineering</option> <option value="construction">Construction &amp; Execution</option> <option value="advisory">Engineering Advisory</option> <option value="other">Other</option> </select>
-         </div>
-        </div>
-        <div><label for="message" class="block text-sm font-semibold text-gray-700 mb-2">Project Details</label> <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-yellow-500 focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-20 outline-none transition-all resize-none">
-              &lt;/div&gt;
-              
-              </textarea><button type="submit" class="btn-primary w-full accent-gradient text-white py-4 rounded-lg font-bold text-base"> Send Message </button>
-         <p id="form-status" class="text-center text-sm hidden"></p>
-        </div>
-       </form>
       </div>
      </div>
     </div>
@@ -495,12 +497,62 @@
       </div>
      </div>
      <div class="pt-8 border-t border-gray-800 text-center text-gray-400 text-sm">
-      <p>© 2026 ELM Engineering and Projects Ltd. All rights reserved.</p>
+      <p class="mb-2">© 2026 ELM Engineering and Projects Ltd. All rights reserved.</p>
+      <p class="text-xs text-gray-500">Developed by <span class="text-yellow-400 font-semibold">I.TEC GLOBAL</span></p>
      </div>
     </div>
    </footer>
   </div>
   <script>
+    // Image Slideshow
+    const slideshowImages = [
+      'https://i.ibb.co/XrxSwjBg/0004.png',
+      'https://i.ibb.co/20LVfwH4/0003.png',
+      'https://i.ibb.co/Cswf60cm/0002.png',
+      'https://i.ibb.co/b0VFpsM/0001.png',
+      'https://i.ibb.co/6chjvPNf/0000.png'
+    ];
+    
+    let currentSlideIndex = 0;
+    const slideshowImg = document.getElementById('hero-slideshow');
+    const dots = document.querySelectorAll('.slideshow-dot');
+    
+    function updateDots() {
+      dots.forEach((dot, index) => {
+        if (index === currentSlideIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    }
+    
+    function changeSlide() {
+      // Fade out
+      slideshowImg.classList.add('fade-transition');
+      
+      setTimeout(() => {
+        // Change to random image (but different from current)
+        let newIndex;
+        do {
+          newIndex = Math.floor(Math.random() * slideshowImages.length);
+        } while (newIndex === currentSlideIndex && slideshowImages.length > 1);
+        
+        currentSlideIndex = newIndex;
+        slideshowImg.src = slideshowImages[currentSlideIndex];
+        updateDots();
+        
+        // Fade in
+        slideshowImg.classList.remove('fade-transition');
+      }, 500);
+    }
+    
+    // Initialize dots
+    updateDots();
+    
+    // Change image every 4 seconds
+    setInterval(changeSlide, 4000);
+
     // Default configuration
     const defaultConfig = {
       company_name: 'ELM ENGINEERING',
@@ -588,11 +640,39 @@
     document.getElementById('contact-form').addEventListener('submit', function(e) {
       e.preventDefault();
       const status = document.getElementById('form-status');
-      status.textContent = '✓ Thank you! Your message has been sent. We\'ll get back to you within 24 hours.';
+      const submitButton = this.querySelector('button[type="submit"]');
+      
+      // Get form data
+      const formData = new FormData(this);
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const phone = formData.get('phone');
+      const service = formData.get('service');
+      const message = formData.get('message');
+      
+      // Create mailto link with form data
+      const subject = encodeURIComponent(`New Inquiry from ${name} - ${service || 'General'}`);
+      const body = encodeURIComponent(`
+Name: ${name}
+Email: ${email}
+Phone: ${phone || 'Not provided'}
+Service Interested In: ${service || 'Not specified'}
+
+Message:
+${message}
+      `);
+      
+      const mailtoLink = `mailto:elmengineeringandprojects@gmail.com?subject=${subject}&body=${body}`;
+      
+      // Open email client
+      window.open(mailtoLink, '_blank');
+      
+      // Show success message
+      status.textContent = '✓ Your email client will open. Please send the message from there.';
       status.className = 'text-center text-sm text-green-600 font-semibold';
       status.classList.remove('hidden');
-      this.reset();
-      setTimeout(() => status.classList.add('hidden'), 5000);
+      
+      setTimeout(() => status.classList.add('hidden'), 6000);
     });
 
     // Element SDK Integration
@@ -718,33 +798,6 @@
     } else {
       onConfigChange(defaultConfig);
     }
-
-    // ===== AI ASSISTANT BUTTON HANDLER =====
-    function setupAssistantButtons() {
-      const aiAssistantBtn = document.getElementById('ai-assistant-btn');
-      const aiAssistantBtnMobile = document.getElementById('ai-assistant-btn-mobile');
-      
-      function openAssistant(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        // Open external AI Assistant link
-        window.open('https://elmengineeringandprojects-cmyk.github.io/elm-ai/', '_blank');
-      }
-
-      if (aiAssistantBtn) {
-        aiAssistantBtn.addEventListener('click', openAssistant);
-      }
-      if (aiAssistantBtnMobile) {
-        aiAssistantBtnMobile.addEventListener('click', openAssistant);
-      }
-    }
-
-    // Try to setup immediately and also on DOMContentLoaded
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', setupAssistantButtons);
-    } else {
-      setupAssistantButtons();
-    }
   </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c3777d9a1b5ef15',t:'MTc2OTM0MDkzNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ce671aa92669574',t:'MTc3MTE3NTY5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
